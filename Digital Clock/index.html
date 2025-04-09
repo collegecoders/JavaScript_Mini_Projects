@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background: linear-gradient(90deg, #00c9ff, #92fe9d);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+      }
+      .clock {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 90%;
+        height: 150px;
+      }
+      #hr,
+      #min,
+      #sec {
+        background-color: white;
+        height: 100%;
+        width: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 60px;
+        font-weight: 600;
+        border-radius: 10px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      }
+      span {
+        color: white;
+        font-weight: 600;
+        font-size: 70px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <div id="hr">10</div>
+      <span>:</span>
+      <div id="min">50</div>
+      <span>:</span>
+      <div id="sec">59</div>
+    </div>
+    <script>
+      const hr = document.getElementById("hr");
+      const min = document.getElementById("min");
+      const sec = document.getElementById("sec");
+
+      var clock = setInterval(function time() {
+        var date_now = new Date();
+
+        var hr1 = date_now.getHours();
+        var min1 = date_now.getMinutes();
+        var sec1 = date_now.getSeconds();
+
+        if (hr1 < 10) {
+          hr1 = "0" + hr1;
+        }
+        if (min1 < 10) {
+          min1 = "0" + min1;
+        }
+        if (sec1 < 10) {
+          sec1 = "0" + sec1;
+        }
+        hr.textContent = hr1;
+        min.textContent = min1;
+        sec.textContent = sec1;
+      }, 1000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #fab22e;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+      }
+      .container {
+        background-color: black;
+        color: white;
+        padding: 30px 40px;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        border-radius: 15px;
+      }
+      span {
+        font-size: 80px;
+      }
+      #joke {
+        font-size: 17px;
+        text-align: center;
+        font-style: italic;
+      }
+      button {
+        background-color: #fab22e;
+        padding: 13px 25px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <span>&#128514;</span>
+      <div id="joke"></div>
+      <button id="btn" onclick="generateJoke()">Generate Joke</button>
+    </div>
+    <script>
+      const joke = document.getElementById("joke");
+      const btn = document.getElementById("btn");
+      const url =
+        "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,explicit&type=single";
+
+      function generateJoke() {
+        fetch(url)
+          .then((data) => data.json())
+          .then((item) => {
+            joke.textContent = `${item.joke}`;
+          });
+      }
+    </script>
+  </body>
+</html>
